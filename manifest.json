@@ -1,18 +1,18 @@
 {
   "workstream": "CV-REL-01",
-  "stage": "CV-REL-01D-CORR-01",
-  "candidate": "RC2",
+  "stage": "CV-REL-01D-CORR-02",
+  "candidate": "RC3",
   "public_version": "0.7.0",
   "status": "MANUALLY_ACCEPTED_READY_FOR_CONTROLLED_PRODUCTION_REPLACEMENT",
   "canonical_url": "https://cards.mowfleetbuilder.com/",
   "production_repository": "droho/mow-card-viewer",
-  "parent_production_commit": "15a157c2b3da1daa659908420beef49a7f78809e",
-  "parent_production_index_sha256": "85677e7e1e0a3f945014f99991f0715c5a905f4c22362c8cb287a96decf56d38",
+  "parent_production_commit": "ec586a176a4dbf004b8cadaf0ef840fa6a1bba74",
+  "parent_production_index_sha256": "aac3e258ea9b0451126f6aa32eab9e1a5e4327c5e9a8001a3c6a6bc016cd7035",
   "files": [
     {
       "name": "BUILD.json",
-      "bytes": 1386,
-      "sha256": "5e660764dad238448798472110f0008384d9230dbdf4be7c423303f01ff186ac"
+      "bytes": 1583,
+      "sha256": "2cfef79c51925cc7d95ee7428e3cc8768ac6eab299ed0c15c417d51580fdefac"
     },
     {
       "name": "CNAME",
@@ -21,8 +21,8 @@
     },
     {
       "name": "DEPLOYMENT_AND_ROLLBACK_RUNBOOK.md",
-      "bytes": 1968,
-      "sha256": "17d4130ca669b8a2e0e33fe369b8ed6eae578c18bd6b0d57f5d8f46c3cd7f679"
+      "bytes": 2167,
+      "sha256": "69af4e2ddc33e6875698ebdae421b1dae455d6a6bea1a9535c9b890dbf03e6da"
     },
     {
       "name": "DOMAIN_READINESS.md",
@@ -51,18 +51,18 @@
     },
     {
       "name": "REGRESSION_REPORT.md",
-      "bytes": 2368,
-      "sha256": "b978446626135fb9d7868c859edd4eb645235f94645c5c04f23dc7aa84139760"
+      "bytes": 3004,
+      "sha256": "d79686bdf3306a7b9a21a56302e761cf59d5ec6a322db8550a175319fb2f6a97"
     },
     {
       "name": "RELEASE_NOTES.md",
-      "bytes": 1920,
-      "sha256": "35c2c0a0174dfe59545cdeb51462be68f81639cd34308fd88750afa8bd4fc859"
+      "bytes": 2591,
+      "sha256": "fb842bb9dd1e871244fd5a1ef1cec0cd572bc2f5bfb75656923ff40ef89ff23a"
     },
     {
       "name": "index.html",
-      "bytes": 2383517,
-      "sha256": "aac3e258ea9b0451126f6aa32eab9e1a5e4327c5e9a8001a3c6a6bc016cd7035"
+      "bytes": 2386413,
+      "sha256": "da4b05f01ba6d63dd20d0700d693a2f96805a1f97ba2a4a17923502f874eba1b"
     },
     {
       "name": "robots.txt",
