@@ -671,8 +671,33 @@ body.has-compare-tray .main{padding-bottom:100px}
 
 <style id="cv-rel-01c-release-shell">
 /* Public release shell: hide internal engineering provenance from player-facing UI. */
-.brand .cv-public-legal-link{display:inline-block;margin-top:5px;color:#b9c8c9;font:700 10px/1.2 system-ui,sans-serif;text-decoration:none;opacity:.82}
-.brand .cv-public-legal-link:hover{text-decoration:underline;opacity:1}
+.brand .cv-brand-links{display:flex;align-items:baseline;flex-wrap:wrap;gap:7px;margin-top:5px}
+.brand .cv-brand-credit{font:700 14px/1.15 Georgia,serif;text-decoration:none;white-space:nowrap}
+.brand .cv-brand-credit .cv-brand-credit-by{color:#e6edef}
+.brand .cv-brand-credit .cv-brand-credit-name{color:#e2c07d}
+.brand .cv-brand-credit:hover .cv-brand-credit-name{text-decoration:underline}
+.brand .cv-brand-link-sep{color:#617984;font-size:10px;opacity:.8}
+.brand .cv-brand-builder-link,.brand .cv-public-legal-link{color:#b9c8c9;font:700 10px/1.2 system-ui,sans-serif;text-decoration:none;opacity:.82}
+.brand .cv-brand-builder-link:hover,.brand .cv-public-legal-link:hover{text-decoration:underline;opacity:1}
+.brand .cv-public-legal-link{display:inline-block;margin-top:5px}
+.cv-mobile-brand-strip{display:none}
+@media(max-width:720px){
+  .cv-mobile-brand-strip{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    min-height:26px;margin:-2px 0 7px;padding:4px 9px;
+    border:1px solid rgba(255,255,255,.10);border-radius:8px;
+    background:linear-gradient(90deg,rgba(9,27,35,.76),rgba(16,38,48,.84),rgba(9,27,35,.76));
+    box-shadow:inset 0 1px rgba(255,255,255,.025);
+    color:#aebfc5;font:800 9.5px/1 system-ui,sans-serif;letter-spacing:.025em;
+  }
+  .cv-mobile-brand-strip a{text-decoration:none;white-space:nowrap}
+  .cv-mobile-credit{font:700 11px/1 Georgia,serif}
+  .cv-mobile-credit-by{color:#dce5e8}
+  .cv-mobile-credit-name{color:#e2c07d}
+  .cv-mobile-builder{color:#b9c8c9}
+  .cv-mobile-brand-strip a:active,.cv-mobile-brand-strip a:focus-visible{text-decoration:underline}
+  .cv-mobile-strip-sep{color:#5f7781;font-size:8px}
+}
 .unit-relation-filter-kicker,.compare-sidebar-kicker,.wd1d-title-badge,.card-footer,.game-card-footer,.compare-footer,.tag-filter-help,.rules-browser-help,.unit-rules-kicker,.global-rule-kicker{display:none!important}
 </style>
 </head>
@@ -683,6 +708,13 @@ body.has-compare-tray .main{padding-bottom:100px}
       <button id="sidebarClose" class="sidebar-close" type="button" aria-label="Zamknij panel">×</button>
       <div class="brand-kicker">Man O' War</div>
       <h1>Card Viewer</h1>
+      <div class="cv-brand-links">
+        <a class="cv-brand-credit" href="https://www.instagram.com/midlifeminiatures" target="_blank" rel="noopener noreferrer" aria-label="by Droho — Instagram">
+          <span class="cv-brand-credit-by">by</span> <span class="cv-brand-credit-name">Droho</span>
+        </a>
+        <span class="cv-brand-link-sep" aria-hidden="true">•</span>
+        <a class="cv-brand-builder-link" href="https://mowfleetbuilder.com" target="_blank" rel="noopener noreferrer">Fleet Builder ↗</a>
+      </div>
       <a class="cv-public-legal-link" href="LEGAL_NOTICE.html">Legal notice</a>
     </div>
     <div class="mode-switch" aria-label="Rodzaj czytnika">
@@ -781,6 +813,13 @@ body.has-compare-tray .main{padding-bottom:100px}
         <button class="mode-btn" data-mode="cards">✦ Karty</button>
       <button class="mode-btn" data-mode="rules">☷ Zasady</button>
         <button class="mode-btn" data-mode="compare">⇄ Porównaj</button>
+      </div>
+      <div class="cv-mobile-brand-strip" aria-label="Creator and Fleet Builder links">
+        <a class="cv-mobile-credit" href="https://www.instagram.com/midlifeminiatures" target="_blank" rel="noopener noreferrer" aria-label="by Droho — Instagram">
+          <span class="cv-mobile-credit-by">by</span> <span class="cv-mobile-credit-name">Droho</span>
+        </a>
+        <span class="cv-mobile-strip-sep" aria-hidden="true">•</span>
+        <a class="cv-mobile-builder" href="https://mowfleetbuilder.com" target="_blank" rel="noopener noreferrer">Fleet Builder ↗</a>
       </div>
       <div class="toolbar-copy">
         <strong id="toolbarTitle">Graficzna karta jednostki</strong>
@@ -3474,7 +3513,7 @@ initCompare1D();
       .replace(/Profil podstawowy/gi,'Basic profile').replace(/Uzbrojenie/gi,'Weapons').replace(/Lokacje trafień/gi,'Hit locations').replace(/Zasady specjalne/gi,'Special rules').replace(/Karty i ulepszenia/gi,'Cards and upgrades').replace(/RUCH PAROWY/gi,'STEAM MOVEMENT').replace(/RUCH WSTECZ/gi,'REVERSE MOVEMENT').replace(/\bwyjątek:/gi,'exception:').replace(/^Profil$/gi,'Profile').replace(/RUCH ·/gi,'MOVEMENT ·');return out;}
   let translating=false;
   const cvOriginalText=new WeakMap(),cvOriginalAttrs=new WeakMap();
-  function cvTranslateDom(root=document){if(translating)return;translating=true;try{const base=root instanceof Document?root.body:root;const walker=document.createTreeWalker(base,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{if(n.parentElement?.closest('script,style'))return;if(isEN()){if(!cvOriginalText.has(n))cvOriginalText.set(n,n.nodeValue);const v=translateTextValue(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;}else if(cvOriginalText.has(n)){const v=cvOriginalText.get(n);if(v!==n.nodeValue)n.nodeValue=v;}});base.querySelectorAll?.('[placeholder],[aria-label],[title]').forEach(el=>{let saved=cvOriginalAttrs.get(el);if(!saved){saved={};cvOriginalAttrs.set(el,saved);}['placeholder','aria-label','title'].forEach(a=>{if(!el.hasAttribute(a))return;if(isEN()){if(!(a in saved))saved[a]=el.getAttribute(a);const v=el.getAttribute(a);const nv=ATTR_EN.get(v)||TEXT_EN.get(v)||v;if(nv!==v)el.setAttribute(a,nv);}else if(a in saved&&saved[a]!==el.getAttribute(a))el.setAttribute(a,saved[a]);});});}finally{translating=false;}}
+  function cvTranslateDom(root=document){if(translating)return;translating=true;try{const base=root instanceof Document?root.body:root;const walker=document.createTreeWalker(base,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{if(n.parentElement?.closest('script,style'))return;if(isEN()){if(!cvOriginalText.has(n))cvOriginalText.set(n,n.nodeValue);const v=translateTextValue(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;}else if(cvOriginalText.has(n)){const v=cvOriginalText.get(n);if(v!==n.nodeValue)n.nodeValue=v;}});base.querySelectorAll?.('[placeholder],[aria-label],[title]').forEach(el=>{if(el.id==='cvLangMobileToggle')return;let saved=cvOriginalAttrs.get(el);if(!saved){saved={};cvOriginalAttrs.set(el,saved);}['placeholder','aria-label','title'].forEach(a=>{if(!el.hasAttribute(a))return;if(isEN()){if(!(a in saved))saved[a]=el.getAttribute(a);const v=el.getAttribute(a);const nv=ATTR_EN.get(v)||TEXT_EN.get(v)||v;if(nv!==v)el.setAttribute(a,nv);}else if(a in saved&&saved[a]!==el.getAttribute(a))el.setAttribute(a,saved[a]);});});}finally{translating=false;}}
 
   function cvCleanupTechnical(){
     document.querySelectorAll('[data-mode="emulator"],#emulatorSidebarPanel,#emulatorDetail,.wd1d-title-badge').forEach(el=>el.remove());
@@ -3600,7 +3639,7 @@ initCompare1D();
     'Widok rozdziela elementy wspólne, warianty tej samej mechaniki oraz cechy unikalne. Nie tworzy rankingu i nie ocenia, która jednostka jest lepsza.':'The view separates shared elements, variants of the same mechanic and unique features. It does not rank units or judge which one is better.',
     'Pokaż wspólne':'Show shared','Zwiń wspólne':'Hide shared',
     'Wspólne':'Shared','Wariant':'Variant','Różny wariant':'Different variant','Tylko lewa':'Left only','Tylko prawa':'Right only','Powiązane mechanicznie':'Mechanically related','Brak bezpośredniego odpowiednika':'No direct counterpart','Nieporównywalne':'Incomparable','Powiązane':'Related','Lewa':'Left','Prawa':'Right',
-    'Brak danych':'No data','Brak pozycji w tym widoku':'No items in this view','Zmień tryb porównania, aby zobaczyć pozostałe dane.':'Change the comparison mode to see the remaining data.',
+    'Brak danych':'No data','Brak pozycji w tym widoku':'No items in this view','Zmień tryb porównania, aby zobaczyć pozostałe dane.':'Change the comparison mode to see the remaining data.','Wybierz jednostkę dla tego slotu.':'Choose a unit for this slot.','Brak dopasowania do tabeli units':'No match in the units table',
     'Frakcja':'Faction','Klasa':'Class','Kategoria':'Category','Koszt':'Cost','Typ wyboru':'Selection type','Archetyp zasad':'Rules archetype','Taran':'Ram','Model odporności':'Durability model','Model ruchu':'Movement model',
     'Uwagi do ruchu':'Movement notes','Ruch':'Movement','Opis modelu':'Model description',"Podsumowanie save'ów":'Save summary','Liczba lokacji':'Number of locations','Efekt Below Waterline':'Below Waterline effect','Wounds / Energy / struktura':'Wounds / Energy / structure',
     'Brak uzbrojenia dystansowego.':'No ranged weapons.','Liczba:':'Count:','Strzały:':'Shots:','Odpiera boarding':'Repels boarders','Nie odpiera boardingu':'Does not repel boarders','Utrata:':'Lost with:',
@@ -3653,20 +3692,25 @@ initCompare1D();
       .replace(/Ta sama jednostka może być wybrana po obu stronach, aby sprawdzić kompletność klasyfikacji\./g,'The same unit may be selected on both sides to verify classification completeness.')
       .replace(/Wybierz inny COMPARISON MODE\./g,'Choose another comparison mode.')
       .replace(/\bRuch parowy\b/g,'Steam movement').replace(/\bRuch pod żaglami\b/g,'Sail movement').replace(/\bWiatr z rufy\b/g,'Wind astern').replace(/\bRuch pod wiosłami\b/g,'Oared movement').replace(/\bRuch bez skrętów\b/g,'Movement without turns').replace(/\bRuch wstecz\b/g,'Reverse movement').replace(/\bLot\b/g,'Flight').replace(/\bRuch magiczny\b/g,'Magic movement').replace(/\bRuch potwora\b/g,'Monster movement').replace(/\bKoła napędowe\b/g,'Treadwheels').replace(/\bŁopatki\b/g,'Paddles').replace(/\bObrót w miejscu\b/g,'Turn in place').replace(/\bSkręt\b/g,'Turn').replace(/\bIgnoruje wiatr\b/g,'Ignores wind').replace(/\bTeren i crash test\b/g,'Terrain and crash test')
-      .replace(/\bTak\b/g,'Yes').replace(/\bNie\b/g,'No').replace(/\bmoże przelatywać\b/g,'may cross').replace(/\bmoże zakończyć nad terenem\b/g,'may end over terrain').replace(/\butrata\b/g,'loss').replace(/\bza ½ ruchu\b/g,'for ½ movement').replace(/\bjako cały ruch\b/g,'as full movement').replace(/\bwyjątek:\s*/g,'exception: ');
+      .replace(/\bTak\b/g,'Yes').replace(/\bNie\b/g,'No').replace(/\bmoże przelatywać\b/g,'may cross').replace(/\bmoże zakończyć nad terenem\b/g,'may end over terrain').replace(/\butrata\b/g,'loss').replace(/½ ruchu/gi,'½ movement').replace(/\bza ½ movement\b/g,'for ½ movement').replace(/\bjako cały ruch\b/g,'as full movement').replace(/\bwyjątek:\s*/g,'exception: ');
     return out;
   }
 
   let busy=false;
   const originals=new WeakMap(), attrOriginals=new WeakMap();
   function apply(root=document){
-    if(busy)return;busy=true;
+    if(busy)return;
+    // CORR-02 / RC3: RC2 is an EN-only supplement. The core i18n layer owns
+    // restoration to Polish. Restoring RC2-cached attributes in PL caused the
+    // core and RC2 MutationObservers to ping-pong aria/title/placeholder values
+    // indefinitely, freezing the page on EN -> PL.
+    if(window.CV_GET_LANGUAGE?.()!=='en')return;
+    busy=true;
     try{
-      const en=window.CV_GET_LANGUAGE?.()==='en';
       const base=root instanceof Document?root.body:root;
       const w=document.createTreeWalker(base,NodeFilter.SHOW_TEXT),nodes=[];while(w.nextNode())nodes.push(w.currentNode);
-      nodes.forEach(n=>{if(n.parentElement?.closest('script,style'))return;if(en){if(!originals.has(n))originals.set(n,n.nodeValue);const v=tx(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;}else if(originals.has(n)){const v=originals.get(n);if(v!==n.nodeValue)n.nodeValue=v;}});
-      base.querySelectorAll?.('[placeholder],[aria-label],[title]').forEach(el=>{let saved=attrOriginals.get(el);if(!saved){saved={};attrOriginals.set(el,saved);}['placeholder','aria-label','title'].forEach(a=>{if(!el.hasAttribute(a))return;if(en){if(!(a in saved))saved[a]=el.getAttribute(a);const v=tx(el.getAttribute(a));if(v!==el.getAttribute(a))el.setAttribute(a,v);}else if(a in saved&&saved[a]!==el.getAttribute(a))el.setAttribute(a,saved[a]);});});
+      nodes.forEach(n=>{if(n.parentElement?.closest('script,style'))return;if(!originals.has(n))originals.set(n,n.nodeValue);const v=tx(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;});
+      base.querySelectorAll?.('[placeholder],[aria-label],[title]').forEach(el=>{let saved=attrOriginals.get(el);if(!saved){saved={};attrOriginals.set(el,saved);}['placeholder','aria-label','title'].forEach(a=>{if(!el.hasAttribute(a))return;if(!(a in saved))saved[a]=el.getAttribute(a);const v=tx(el.getAttribute(a));if(v!==el.getAttribute(a))el.setAttribute(a,v);});});
     }finally{busy=false;}
   }
 
