@@ -20,11 +20,22 @@ Official standalone public release of the Man O' War Card Viewer.
 
 ## RC2 correction pass
 
-A post-publication visual review identified remaining Polish player-facing strings in parts of the English UI and an ambiguous Dwarf upgrade-card sigil. RC2 corrects both without changing game data or gameplay logic.
+A post-publication visual review identified remaining Polish player-facing strings in parts of the English UI and an ambiguous Dwarf upgrade-card sigil. RC2 corrected both without changing game data or gameplay logic.
 
 - completed English labels, helper text, status badges, empty states and Compare/card-relation surfaces;
 - removed Polish collapse/expand labels generated from CSS in English mode;
 - replaced the Dwarf upgrade-card sigil with a neutral hammer-and-anvil engineering emblem.
+
+## RC3 correction pass
+
+A further live review identified a reproducible freeze when switching the interface from English back to Polish. RC3 removes the observer feedback loop and completes the language-cycle correction.
+
+- supplemental translation is EN-only; Polish restoration remains owned by the core i18n layer;
+- corrected mobile language-toggle attribute ownership;
+- closed three additional English UI leftovers found during the full audit;
+- added `by Droho` attribution linking to `https://www.instagram.com/midlifeminiatures`;
+- added a `Fleet Builder ↗` link to `https://mowfleetbuilder.com`;
+- added a compact mobile-only creator / Fleet Builder strip.
 
 ## Unchanged boundaries
 
