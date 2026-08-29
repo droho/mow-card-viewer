@@ -1,16 +1,18 @@
 {
   "workstream": "CV-REL-01",
-  "stage": "CV-REL-01C",
-  "candidate": "RC1",
+  "stage": "CV-REL-01D-CORR-01",
+  "candidate": "RC2",
   "public_version": "0.7.0",
-  "status": "READY_FOR_CENTRAL_ACCEPTANCE_NOT_PUBLISHED",
+  "status": "MANUALLY_ACCEPTED_READY_FOR_CONTROLLED_PRODUCTION_REPLACEMENT",
   "canonical_url": "https://cards.mowfleetbuilder.com/",
   "production_repository": "droho/mow-card-viewer",
+  "parent_production_commit": "15a157c2b3da1daa659908420beef49a7f78809e",
+  "parent_production_index_sha256": "85677e7e1e0a3f945014f99991f0715c5a905f4c22362c8cb287a96decf56d38",
   "files": [
     {
       "name": "BUILD.json",
-      "bytes": 1200,
-      "sha256": "5bf4bd010221148aa6b8a14b5b23ca6e6725587b9fd7f59d305634443b4d6f34"
+      "bytes": 1386,
+      "sha256": "5e660764dad238448798472110f0008384d9230dbdf4be7c423303f01ff186ac"
     },
     {
       "name": "CNAME",
@@ -19,8 +21,8 @@
     },
     {
       "name": "DEPLOYMENT_AND_ROLLBACK_RUNBOOK.md",
-      "bytes": 2516,
-      "sha256": "a3c6f2ab6f09b6b311702bfa919e402a1a9a3779a8dc6a210749bb05b9caf6d3"
+      "bytes": 1968,
+      "sha256": "17d4130ca669b8a2e0e33fe369b8ed6eae578c18bd6b0d57f5d8f46c3cd7f679"
     },
     {
       "name": "DOMAIN_READINESS.md",
@@ -49,18 +51,18 @@
     },
     {
       "name": "REGRESSION_REPORT.md",
-      "bytes": 3975,
-      "sha256": "324ce8b608f9488192c7aa92b0bcb85a5b87cd35cff0fd009bba2560587dcf60"
+      "bytes": 2368,
+      "sha256": "b978446626135fb9d7868c859edd4eb645235f94645c5c04f23dc7aa84139760"
     },
     {
       "name": "RELEASE_NOTES.md",
-      "bytes": 1429,
-      "sha256": "e735618620db080d66dd52374f521c7e6635f1ed05d080e7ee1547c3a7c012e9"
+      "bytes": 1920,
+      "sha256": "35c2c0a0174dfe59545cdeb51462be68f81639cd34308fd88750afa8bd4fc859"
     },
     {
       "name": "index.html",
-      "bytes": 2369679,
-      "sha256": "85677e7e1e0a3f945014f99991f0715c5a905f4c22362c8cb287a96decf56d38"
+      "bytes": 2383517,
+      "sha256": "aac3e258ea9b0451126f6aa32eab9e1a5e4327c5e9a8001a3c6a6bc016cd7035"
     },
     {
       "name": "robots.txt",

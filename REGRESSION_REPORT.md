@@ -1,80 +1,70 @@
-# CV-REL-01C RC1 — regression report
+# CV-REL-01D-CORR-01 RC2 — regression report
 
-## Result
+Date: 2026-08-29
 
-**PASS — RC1 static/data regression and release-shell checks.**
+**PASS — correction-scope regression / manual review accepted.**
 
-The release candidate is based on the exact manually accepted CV-REL-01B R3A artifact. CV-REL-01C changes only public release identity/canonical metadata and removes/hides legacy engineering provenance from player-facing surfaces. Canonical game-data payloads are unchanged.
+## Parent baseline
 
-## Accepted input seal
+RC2 is a bounded correction of the live Card Viewer 0.7.0 RC1. The full RC1 static/data regression remains the inherited baseline. Parent production commit: `15a157c2b3da1daa659908420beef49a7f78809e`; parent live `index.html` SHA-256: `85677e7e1e0a3f945014f99991f0715c5a905f4c22362c8cb287a96decf56d38`.
 
-- CV-REL-01B R3A SHA-256: `0ffbb9bc5753a6922b4183da30db474b16de904f8b24f5049a1936cebdf6e8a5` — PASS.
-- Data Core v13 SHA-256: `1ddb0b70bfc0d2e504f8877fa052a54a7466919036f9d668f41bf204c3d003ca` — PASS.
-- `PRAGMA user_version = 13` — PASS.
-- `PRAGMA integrity_check = ok` — PASS.
+## Correction scope
 
-## Exact game-data projection checks
+1. Complete the remaining English player-facing UI strings, especially Compare and card-relation surfaces.
+2. Replace the ambiguous Dwarf upgrade-card sigil with a hammer-and-anvil emblem.
 
-- unit profiles: 73 / DB 73 — PASS;
-- hit locations: 311 / DB 311 — PASS;
-- combat weapons: 91 / DB 91 — PASS;
-- combat special-rule rows: 172 / DB 172 — PASS;
-- target-band memberships: 185 / DB 185 — PASS;
-- target-band membership set exactly equals Data Core v13 — PASS;
-- split HIGH/LOW profiles: 20 — PASS;
-- overlap locations: 24 across 12 profiles — PASS;
-- cards: 219, exact `card_id` set vs Data Core — PASS;
-- card decks: 17, exact `deck_id` set — PASS;
-- magic cards: 114, exact `card_id` set — PASS;
-- magic decks: 6, exact deck-key set — PASS.
+## Data / diagram non-regression
 
-### FAQ/Errata projection
+The following embedded canonical payload constants are byte-identical between RC1 and RC2:
 
-Data Core contains 71 `annual_faq_errata` source rows. The Viewer intentionally exposes 66 deduplicated global FAQ records. The union of their `source_faq_ids` covers all 71 Data Core rows exactly — PASS.
+- `WEAPON_DIAGRAMS`;
+- `UNITS`;
+- `CARDS`;
+- `CARD_DECKS`;
+- `TAG_DEFINITIONS`;
+- `DB_META`;
+- `CARD_RELATION_DATA`;
+- `CARD_RELATIONS`;
+- `CARD_RELATION_FAMILIES`;
+- `MOW_LOCATION_MATCHES`;
+- `UNIT_RULES_DATA`;
+- `RULE_PROFILE_INDEX`;
+- `RULE_ARCHETYPE_INDEX`;
+- `GENERIC_RULE_INDEX`;
+- `GLOBAL_FAQ_DATA`;
+- `GLOBAL_RULE_CANONICAL_LAYER`;
+- `FAQ_RULE_TARGET_MAP`;
+- `GLOBAL_RULE_ALIASES`;
+- `GLOBAL_RULE_INDEX`.
 
-The five apparent count differences are the paired Tzeentch FAQ rows consolidated for Bane Tower / Great Winged Terror; no source FAQ is lost.
+Therefore the correction does not mutate game data, target-band semantics, FAQ content, card data, unit data, or the accepted WD1 weapon-diagram payload.
 
-## Mandatory fixtures
+## English UI audit
 
-- Empire Greatship: HIGH rolls 4/5/6 — PASS;
-- Empire Greatship: overlap HIGH+LOW rolls 2/3 — PASS;
-- Empire Greatship: LOW rolls 4/5/6 — PASS;
-- Dwarf Dreadnought: split profile with zero false overlap — PASS;
-- Skaven Deathburner: purchased crew / no fixed numeric crew — PASS;
-- Skaven Doombringer: purchased crew / no fixed numeric crew — PASS;
-- Skaven Warp Raider: purchased crew / no fixed numeric crew — PASS.
+Representative English rendering was exercised for Units, Cards, Rules and all four Compare modes. A high-confidence Polish-remnant detector returned:
 
-## Payload preservation vs accepted R3A
+- Units: 0;
+- Cards: 0;
+- Rules: 0;
+- Compare / Full analysis: 0;
+- Compare / Side by side: 0;
+- Compare / Differences only: 0;
+- Compare / Shared only: 0.
 
-The following JavaScript data literals are byte-identical to accepted R3A:
+The pass covered the live-defect vocabulary including Polish diacritics and terms such as `Brak`, `Wybierz`, `WSPÓLNE`, `WARIANT`, `jednostek`, `Potwierdzone`, `Lokacje`, `Zwiń/Rozwiń` and `Rodzina modelu`.
 
-- `UNITS` — PASS;
-- `CARDS` — PASS;
-- `CARD_DECKS` — PASS;
-- `WEAPON_DIAGRAMS` — PASS;
-- `GLOBAL_FAQ_DATA` — PASS.
+## Visual correction
 
-Therefore the CV-REL-01C release shell did not mutate game data or the accepted shared weapon-diagram payload.
+The Dwarf upgrade-card emblem was changed from the ambiguous star-like symbol to a hammer-and-anvil engineering mark. No Dwarf card text or game rule was changed.
 
-## Release-shell checks
+## Manual gate
 
-- public page title identifies Card Viewer 0.7.0 — PASS;
-- canonical URL is `https://cards.mowfleetbuilder.com/` — PASS;
-- no `noindex` directive — PASS;
-- public `robots.txt` allows crawling — PASS;
-- public CNAME is `cards.mowfleetbuilder.com` — PASS;
-- player-facing internal WD1/build/database footers and engineering kickers are hidden — PASS;
-- legal notice is linked from the UI — PASS;
-- standalone Card Emulator UI is absent — PASS;
-- ship/card/rule/compare deep-link routing remains present — PASS;
-- PL/EN layer remains present — PASS;
-- reduced-motion handling remains present — PASS;
-- weapon-diagram forced-light behavior from accepted R3/R3A remains present — PASS.
+The user manually reviewed and accepted the RC2 review candidate on 2026-08-29.
 
-## Browser/manual evidence inheritance
+## Scope guard
 
-The accepted B stage supplied successful browser smoke on 320/360/390 px mobile, system dark-mode diagram rendering and 1440×900 desktop, followed by user/manual acceptance of exact R3A after the narrow duplicate-animation correction.
-
-The current execution environment blocks a fresh local Chromium navigation to file/localhost content, so RC1 browser evidence is not falsely marked as newly executed. Because RC1 does not change game logic/data and its UI changes are limited to release identity and hiding old technical provenance, the remaining publication smoke is explicitly retained in CV-REL-01D after deployment.
-
-Raw machine-readable/static evidence is in `REGRESSION_RAW.txt`.
+- Data Core unchanged;
+- Fleet Builder unchanged;
+- Game Companion unchanged;
+- `mow.fleet 0.1.2` unchanged;
+- no production write is part of this sealed artifact.

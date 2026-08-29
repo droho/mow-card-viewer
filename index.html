@@ -3574,5 +3574,132 @@ initCompare1D();
   b7UpdateSequenceButtons();
 })();
 </script>\n<!-- CV-REL-01C RC1 candidate: Card Viewer 0.7.0; canonical https://cards.mowfleetbuilder.com/; NOT YET PUBLISHED. -->
+
+<script id="cv-rel-01d-corr-01-rc2-patch">
+(()=>{
+  'use strict';
+  // CORR-01 / RC2: complete English UI pass + unambiguous Dwarf upgrade sigil.
+  // Data payloads, game semantics and WD1 diagrams remain untouched.
+
+  const _rc2CardSigil=cardSigil;
+  cardSigil=function(c){
+    if(c?.family!=="dwarf_upgrade")return _rc2CardSigil(c);
+    // Hammer striking an anvil: deliberately avoids star/cross-like geometry.
+    const inner=`
+      <g fill="currentColor" stroke="none">
+        <path d="M34 76h92l8 9-8 9H99l-8 14v15h25v13H44v-13h25v-15l-8-14H34l-8-9z"/>
+        <path d="M58 24h44l9 10-9 11H88v31H72V45H58L49 34z"/>
+      </g>
+      <path d="M51 136h58" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity=".72"/>
+      <circle cx="80" cy="85" r="5" fill="var(--card-dark)" opacity=".72"/>`;
+    return `<svg class="card-sigil" viewBox="0 0 160 160" aria-hidden="true">${inner}</svg>`;
+  };
+
+  const exact=new Map(Object.entries({
+    'Inteligentne porównanie profili':'Intelligent profile comparison',
+    'Widok rozdziela elementy wspólne, warianty tej samej mechaniki oraz cechy unikalne. Nie tworzy rankingu i nie ocenia, która jednostka jest lepsza.':'The view separates shared elements, variants of the same mechanic and unique features. It does not rank units or judge which one is better.',
+    'Pokaż wspólne':'Show shared','Zwiń wspólne':'Hide shared',
+    'Wspólne':'Shared','Wariant':'Variant','Różny wariant':'Different variant','Tylko lewa':'Left only','Tylko prawa':'Right only','Powiązane mechanicznie':'Mechanically related','Brak bezpośredniego odpowiednika':'No direct counterpart','Nieporównywalne':'Incomparable','Powiązane':'Related','Lewa':'Left','Prawa':'Right',
+    'Brak danych':'No data','Brak pozycji w tym widoku':'No items in this view','Zmień tryb porównania, aby zobaczyć pozostałe dane.':'Change the comparison mode to see the remaining data.',
+    'Frakcja':'Faction','Klasa':'Class','Kategoria':'Category','Koszt':'Cost','Typ wyboru':'Selection type','Archetyp zasad':'Rules archetype','Taran':'Ram','Model odporności':'Durability model','Model ruchu':'Movement model',
+    'Uwagi do ruchu':'Movement notes','Ruch':'Movement','Opis modelu':'Model description',"Podsumowanie save'ów":'Save summary','Liczba lokacji':'Number of locations','Efekt Below Waterline':'Below Waterline effect','Wounds / Energy / struktura':'Wounds / Energy / structure',
+    'Brak uzbrojenia dystansowego.':'No ranged weapons.','Liczba:':'Count:','Strzały:':'Shots:','Odpiera boarding':'Repels boarders','Nie odpiera boardingu':'Does not repel boarders','Utrata:':'Lost with:',
+    'Brak dodatkowego efektu.':'No additional effect.','bez save':'no save','Brak klasycznej tabeli lokacji.':'No classic hit-location table.','zatonięcie przy':'sinks at',
+    'Brak odpowiednika':'No counterpart','Pełna procedura i źródło':'Full procedure and source','Źródło:':'Source:','Brak zasad w tym widoku':'No rules in this view','Wybierz inny tryb porównania.':'Choose another comparison mode.',
+    'Znaczenie w grze:':'Gameplay effect:','Uwaga:':'Note:','Brak FAQ w tym widoku':'No FAQ in this view','Karta':'Card','Brak dostępu':'Not available','Brak kart w tym widoku':'No cards in this view',
+    'Tryb porównania':'Comparison mode','Obok siebie':'Side by side','Analiza pełna':'Full analysis','Tylko różnice':'Differences only','Tylko wspólne':'Shared only',
+    'Profil podstawowy':'Basic profile','Ruch i manewrowość':'Movement and manoeuvrability','Odporność i obrażenia':'Durability and damage','Uzbrojenie':'Weapons','Lokacje trafień':'Hit locations','Zasady specjalne':'Special rules','FAQ i rozstrzygnięcia':'FAQ and rulings','Karty i ulepszenia':'Cards and upgrades',
+    'Koszt, typ wyboru, załoga, klasa i model odporności.':'Cost, selection type, crew, class and durability model.',
+    'Te same tryby są zestawiane parametrycznie; całkowicie różne modele są oznaczane jako nieporównywalne.':'Matching movement modes are compared parametrically; fundamentally different models are marked as incomparable.',
+    'Viewer rozróżnia klasyczne lokacje + BtW, Wounds, Energy oraz modele shorefortów.':'The Viewer distinguishes classic hit locations + BtW, Wounds, Energy and shorefort durability models.',
+    'Broń dopasowana według mechaniki, nazwy i pola ostrzału.':'Weapons are matched by mechanic, name and firing arc.',
+    'Dopasowanie według canonical location_id; HIGH / HIGH+LOW / LOW wynika z target bands Data Core.':'Matched by canonical location_id; HIGH / HIGH+LOW / LOW comes from Data Core target bands.',
+    'Kanoniczne zasady wspólne, warianty parametrów, mechaniki powiązane i elementy unikalne.':'Canonical shared rules, parameter variants, mechanically related rules and unique elements.',
+    'Identyczne odpowiedzi są scalane, a różne rozstrzygnięcia tego samego pytania pozostają obok siebie.':'Identical answers are merged; different rulings for the same question remain side by side.',
+    'Karty wspólne, unikalne i warunkowe w kontekście legalności dla obu profili.':'Shared, unique and conditional cards are compared in the context of assignment legality for both profiles.',
+    'Klasyfikacja jest neutralna: większa liczba nie jest automatycznie oznaczana jako lepsza. „Powiązane mechanicznie” oznacza wspólny typ procedury bez twierdzenia, że zasady są identyczne.':'Classification is neutral: a higher number is not automatically treated as better. “Mechanically related” means a shared procedure type without claiming that the rules are identical.',
+    'Ta sama jednostka może być wybrana po obu stronach, aby sprawdzić kompletność klasyfikacji.':'The same unit may be selected on both sides to verify classification completeness.',
+    'Brak lokacji dla tego wyniku':'No hit location for this result','Brak uzbrojenia w tym widoku':'No weapons in this view','Brak lokacji w tym widoku':'No hit locations in this view',
+    'Lewa jednostka':'Left unit','Prawa jednostka':'Right unit','Wyczyść oba':'Clear both','Wybierz jednostkę':'Choose unit',
+    'lewy slot':'left slot','prawy slot':'right slot',
+    'Profil':'Profile','Szukaj lewej…':'Search left…','Szukaj prawej…':'Search right…','Szukaj po nazwie, frakcji lub klasie…':'Search by name, faction or class…',
+    'Rodzina modelu':'Model family','Lokacja:':'Location:'
+  }));
+
+  function tx(value){
+    let s=String(value??''),t=s.trim();
+    if(exact.has(t))return s.replace(t,exact.get(t));
+    let out=s;
+    out=out
+      .replace(/WSPÓLNE/g,'SHARED').replace(/WARIANT/g,'VARIANT').replace(/POWIĄZANE/g,'RELATED')
+      .replace(/RÓŻNY VARIANT/g,'DIFFERENT VARIANT').replace(/TYLKO LEWA/g,'LEFT ONLY').replace(/TYLKO PRAWA/g,'RIGHT ONLY')
+      .replace(/NIEPORÓWNYWALNE/g,'INCOMPARABLE')
+      .replace(/\bTYP WYBORU\b/g,'SELECTION TYPE').replace(/\bARCHETYP ZASAD\b/g,'RULES ARCHETYPE').replace(/\bMODEL RUCHU\b/g,'MOVEMENT MODEL')
+      .replace(/\bLICZBA LOKACJI\b/g,'NUMBER OF LOCATIONS').replace(/\bEFEKT BELOW WATERLINE\b/g,'BELOW WATERLINE EFFECT')
+      .replace(/\bLiczba:\s*/g,'Count: ').replace(/\bStrzały:\s*/g,'Shots: ').replace(/\bUtrata:\s*/g,'Lost with: ')
+      .replace(/\bLokacja:\s*/g,'Location: ').replace(/\bBrak odpowiednika\b/g,'No counterpart').replace(/\bBrak dostępu\b/g,'Not available')
+      .replace(/(\d+) jednostek/g,'$1 units').replace(/1 jednostka/g,'1 unit').replace(/Potwierdzone/gi,'CONFIRMED').replace(/STRZELANIE/g,'SHOOTING')
+      .replace(/(\d+) cech/g,'$1 features').replace(/Lokacje \+ Below Waterline/g,'Hit locations + Below Waterline')
+      .replace(/mechaniczny \/ wiosłowy/gi,'mechanical / oared').replace(/mechaniczny/gi,'mechanical').replace(/wiosłowy/gi,'oared').replace(/żaglowy/gi,'sailing').replace(/parowy/gi,'steam-powered')
+      .replace(/\bDla ([^\n]+)/g,'For $1').replace(/ten sam archetyp/gi,'same archetype').replace(/ta sama kategoria/gi,'same category').replace(/ta sama frakcja/gi,'same faction').replace(/ta sama klasa/gi,'same class').replace(/ten sam model odporności/gi,'same durability model')
+      .replace(/Rodzina modelu/gi,'Model family')
+      .replace(/\bBrak lokacji dla tego wyniku\b/g,'No hit location for this result')
+      .replace(/\bBrak dodatkowego efektu\.?/g,'No additional effect.')
+      .replace(/\bbez save\b/g,'no save').replace(/\b(\d+) pkt\b/g,'$1 pts')
+      .replace(/^Łącznie:\s*(\d+) wspólnych · (\d+) wariantów · (\d+) mechanicznie powiązanych · (\d+) tylko po lewej · (\d+) tylko po prawej · (\d+) nieporównywalnych\.$/,
+        'Total: $1 shared · $2 variants · $3 mechanically related · $4 left only · $5 right only · $6 incomparable.')
+      .replace(/Active list slot:\s*left\. Ta sama jednostka może być wybrana po obu stronach, aby sprawdzić kompletność klasyfikacji\./g,'Active list slot: left. The same unit may be selected on both sides to verify classification completeness.')
+      .replace(/Active list slot:\s*right\. Ta sama jednostka może być wybrana po obu stronach, aby sprawdzić kompletność klasyfikacji\./g,'Active list slot: right. The same unit may be selected on both sides to verify classification completeness.')
+      .replace(/Ta sama jednostka może być wybrana po obu stronach, aby sprawdzić kompletność klasyfikacji\./g,'The same unit may be selected on both sides to verify classification completeness.')
+      .replace(/Wybierz inny COMPARISON MODE\./g,'Choose another comparison mode.')
+      .replace(/\bRuch parowy\b/g,'Steam movement').replace(/\bRuch pod żaglami\b/g,'Sail movement').replace(/\bWiatr z rufy\b/g,'Wind astern').replace(/\bRuch pod wiosłami\b/g,'Oared movement').replace(/\bRuch bez skrętów\b/g,'Movement without turns').replace(/\bRuch wstecz\b/g,'Reverse movement').replace(/\bLot\b/g,'Flight').replace(/\bRuch magiczny\b/g,'Magic movement').replace(/\bRuch potwora\b/g,'Monster movement').replace(/\bKoła napędowe\b/g,'Treadwheels').replace(/\bŁopatki\b/g,'Paddles').replace(/\bObrót w miejscu\b/g,'Turn in place').replace(/\bSkręt\b/g,'Turn').replace(/\bIgnoruje wiatr\b/g,'Ignores wind').replace(/\bTeren i crash test\b/g,'Terrain and crash test')
+      .replace(/\bTak\b/g,'Yes').replace(/\bNie\b/g,'No').replace(/\bmoże przelatywać\b/g,'may cross').replace(/\bmoże zakończyć nad terenem\b/g,'may end over terrain').replace(/\butrata\b/g,'loss').replace(/\bza ½ ruchu\b/g,'for ½ movement').replace(/\bjako cały ruch\b/g,'as full movement').replace(/\bwyjątek:\s*/g,'exception: ');
+    return out;
+  }
+
+  let busy=false;
+  const originals=new WeakMap(), attrOriginals=new WeakMap();
+  function apply(root=document){
+    if(busy)return;busy=true;
+    try{
+      const en=window.CV_GET_LANGUAGE?.()==='en';
+      const base=root instanceof Document?root.body:root;
+      const w=document.createTreeWalker(base,NodeFilter.SHOW_TEXT),nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+      nodes.forEach(n=>{if(n.parentElement?.closest('script,style'))return;if(en){if(!originals.has(n))originals.set(n,n.nodeValue);const v=tx(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;}else if(originals.has(n)){const v=originals.get(n);if(v!==n.nodeValue)n.nodeValue=v;}});
+      base.querySelectorAll?.('[placeholder],[aria-label],[title]').forEach(el=>{let saved=attrOriginals.get(el);if(!saved){saved={};attrOriginals.set(el,saved);}['placeholder','aria-label','title'].forEach(a=>{if(!el.hasAttribute(a))return;if(en){if(!(a in saved))saved[a]=el.getAttribute(a);const v=tx(el.getAttribute(a));if(v!==el.getAttribute(a))el.setAttribute(a,v);}else if(a in saved&&saved[a]!==el.getAttribute(a))el.setAttribute(a,saved[a]);});});
+    }finally{busy=false;}
+  }
+
+  const _rc2CompareSummary1C=compareSummary1C;
+  compareSummary1C=function(counts){
+    if(window.CV_GET_LANGUAGE?.()!=='en')return _rc2CompareSummary1C(counts);
+    const labels={shared:'SHARED',variant:'VARIANT',left_only:'LEFT',right_only:'RIGHT',related:'RELATED',incomparable:'INCOMPARABLE'};
+    return COMPARE_STATUS_ORDER_1C.filter(k=>counts[k]).map(k=>`<span class="compare-status-pill compare-status-${k}">${labels[k]} ${counts[k]}</span>`).join('')||`<span class="compare-status-pill compare-status-shared">NO DATA</span>`;
+  };
+
+  const _rc2RenderGameCard=renderGameCard;
+  renderGameCard=function(c){_rc2RenderGameCard(c);apply(document);};
+  const _rc2RenderCompareFoundation=renderCompareFoundation;
+  renderCompareFoundation=function(){_rc2RenderCompareFoundation();apply(document);};
+  const _rc2RenderCompareTray=renderCompareTray;
+  renderCompareTray=function(){_rc2RenderCompareTray();apply(document);};
+  const _rc2RenderCompareUnitList=renderCompareUnitList;
+  renderCompareUnitList=function(){_rc2RenderCompareUnitList();apply(document);};
+
+  const obs=new MutationObserver(m=>{if(busy)return;if(m.some(x=>x.addedNodes?.length||x.type==='attributes'))queueMicrotask(()=>apply(document));});
+  obs.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['placeholder','aria-label','title']});
+  new MutationObserver(()=>queueMicrotask(()=>apply(document))).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+  if(!document.getElementById('cv-rc2-en-css')){
+    const st=document.createElement('style');st.id='cv-rc2-en-css';st.textContent=`
+      html[lang="en"] .compare-section.is-collapsed .compare-collapse-section::after{content:"Expand"}
+      html[lang="en"] .compare-section:not(.is-collapsed) .compare-collapse-section::after{content:"Collapse"}
+      html[lang="en"] .compare-side-panel.is-side-collapsed .compare-side-collapse::after{content:"Expand"}
+      html[lang="en"] .compare-side-panel:not(.is-side-collapsed) .compare-side-collapse::after{content:"Collapse"}`;
+    document.head.appendChild(st);
+  }
+  apply(document);
+})();
+</script>
+
 </body>
 </html>

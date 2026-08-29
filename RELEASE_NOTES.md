@@ -2,9 +2,9 @@
 
 ## Release focus
 
-First official standalone public release candidate for the Man O' War Card Viewer.
+Official standalone public release of the Man O' War Card Viewer.
 
-## User-visible changes from the July preview
+## Core release changes
 
 - synchronized release-critical presentation with accepted Data Core v13;
 - corrected HIGH / LOW targeting semantics for locations belonging to both target bands;
@@ -18,9 +18,17 @@ First official standalone public release candidate for the Man O' War Card Viewe
 - mobile navigation polish: compact language switch, previous/next controls for Units/Cards/Rules, clearer Units controls, consistent section-entry animation;
 - desktop navigation alignment cleanup.
 
+## RC2 correction pass
+
+A post-publication visual review identified remaining Polish player-facing strings in parts of the English UI and an ambiguous Dwarf upgrade-card sigil. RC2 corrects both without changing game data or gameplay logic.
+
+- completed English labels, helper text, status badges, empty states and Compare/card-relation surfaces;
+- removed Polish collapse/expand labels generated from CSS in English mode;
+- replaced the Dwarf upgrade-card sigil with a neutral hammer-and-anvil engineering emblem.
+
 ## Unchanged boundaries
 
-- Data Core remains read-only;
+- Data Core remains read-only and unchanged;
 - no Fleet Builder or Game Companion changes;
 - no change to `mow.fleet 0.1.2`;
 - accepted WD1 weapon-diagram payload is not forked or rewritten;
