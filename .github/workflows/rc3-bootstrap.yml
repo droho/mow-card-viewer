@@ -1,0 +1,38 @@
+name: RC3 temporary bootstrap
+
+on:
+  push:
+    branches:
+      - rc3-bootstrap-20260829
+
+permissions:
+  contents: write
+
+jobs:
+  build-exact-rc3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct and verify exact sealed RC3
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED="da4b05f01ba6d63dd20d0700d693a2f96805a1f97ba2a4a17923502f874eba1b"
+          CURRENT="$(sha256sum index.html | awk '{print $1}')"
+          if [ "$CURRENT" = "$EXPECTED" ]; then
+            echo "RC3 already reconstructed exactly; nothing to do."
+            exit 0
+          fi
+          git apply --whitespace=nowarn .rc3-bootstrap.patch
+          ACTUAL="$(sha256sum index.html | awk '{print $1}')"
+          echo "RC3_INDEX_SHA256=$ACTUAL"
+          test "$ACTUAL" = "$EXPECTED"
+          sha256sum -c SHA256SUMS.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Prepare exact RC3 index [bootstrap complete]"
+          git push origin HEAD:rc3-bootstrap-20260829
