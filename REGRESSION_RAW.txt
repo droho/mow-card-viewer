@@ -1,0 +1,59 @@
+PASS_CV_REL01C_RC1_STATIC
+PASS | accepted_R3A_sha | PASS
+PASS | UNITS_byte_identical_R3A | 39f86b7def67c17bbf299b3dd112c25258428448af8b3ec5adfad9f826d506c6
+PASS | CARDS_byte_identical_R3A | 274b79794d5630dcea2dc0d8634e579abd3a9eef53f9193d34a585de3d3cf14c
+PASS | CARD_DECKS_byte_identical_R3A | 17b1d6910df06652dd50336a24b38e4a620a307f3956e379436518751a040164
+PASS | WEAPON_DIAGRAMS_byte_identical_R3A | b92442000069e0996937e7abd7f2f46a004006f6b6b502bb51b1eee91540e782
+PASS | GLOBAL_FAQ_DATA_byte_identical_R3A | 89add450e05b93d58a59cb3edfcff2234f7b76833bc846efbc9236217706ac2e
+PASS | unit_profiles_73 | 73
+PASS | hit_locations_311 | 311
+PASS | combat_weapons_91 | 91
+PASS | combat_special_rules_172 | 172
+PASS | cards_219 | 219
+PASS | decks_17 | 17
+PASS | magic_cards_114 | 114
+PASS | magic_decks_6 | 6
+PASS | target_band_memberships_185 | 185
+PASS | split_profiles_20 | 20
+PASS | overlap_locations_24 | 24
+PASS | overlap_profiles_12 | 12
+PASS | greatship_high_456 | [(4, 'foremast'), (5, 'mainmast'), (6, 'aftmast')]
+PASS | greatship_overlap_23 | [(2, 'forecastle'), (3, 'aftcastle')]
+PASS | greatship_low_456 | [(4, 'bows'), (5, 'gun_deck'), (6, 'stern')]
+PASS | dreadnought_no_overlap | PASS
+PASS | skaven.deathburner_crew_purchased | PASS
+PASS | skaven.doombringer_crew_purchased | PASS
+PASS | skaven.warp_raider_crew_purchased | PASS
+PASS | data_core_sha | PASS
+PASS | data_core_user_version_13 | PASS
+PASS | data_core_integrity | PASS
+PASS | db_combat_profiles_73 | 73
+PASS | db_hit_locations_311 | 311
+PASS | db_hit_location_target_bands_185 | 185
+PASS | db_combat_weapons_91 | 91
+PASS | db_combat_special_rules_172 | 172
+PASS | db_cards_219 | 219
+PASS | db_card_decks_17 | 17
+PASS | db_magic_cards_114 | 114
+PASS | db_magic_decks_6 | 6
+PASS | db_annual_faq_errata_71 | 71
+PASS | target_band_projection_exact | embedded=185 db=185
+PASS | card_ids_exact | PASS
+PASS | deck_ids_exact | PASS
+PASS | magic_card_ids_exact | PASS
+PASS | magic_deck_ids_exact | PASS
+PASS | faq_global_records_66 | 66
+PASS | faq_source_rows_71_covered | covered=71 db=71
+PASS | title_0_7_0 | PASS
+PASS | canonical | PASS
+PASS | no_noindex | PASS
+PASS | public_brand | PASS
+PASS | legal_ui_link | PASS
+PASS | emulator_ui_absent | PASS
+PASS | deep_link_ship | PASS
+PASS | deep_link_card | PASS
+PASS | deep_link_rule | PASS
+PASS | deep_link_compare | PASS
+PASS | pl_en_layer | PASS
+PASS | forced_light_diagrams | PASS
+PASS | reduced_motion | PASS

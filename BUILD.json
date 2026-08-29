@@ -1,0 +1,36 @@
+{
+  "product": "Man O' War Card Viewer",
+  "public_version": "0.7.0",
+  "release_stage": "CV-REL-01C",
+  "candidate": "RC1",
+  "status": "IMMUTABLE_RELEASE_CANDIDATE_NOT_PUBLISHED",
+  "canonical_url": "https://cards.mowfleetbuilder.com/",
+  "intended_repository": "droho/mow-card-viewer",
+  "accepted_parent": {
+    "artifact": "CV-REL-01B_R3A_REVIEW.html",
+    "sha256": "0ffbb9bc5753a6922b4183da30db474b16de904f8b24f5049a1936cebdf6e8a5",
+    "lineage": "MOW-SHARED-WD1E / Viewer 0.6B-4"
+  },
+  "data_core": {
+    "version": 13,
+    "sha256": "1ddb0b70bfc0d2e504f8877fa052a54a7466919036f9d668f41bf204c3d003ca",
+    "mode": "read_only"
+  },
+  "release_index_sha256": "85677e7e1e0a3f945014f99991f0715c5a905f4c22362c8cb287a96decf56d38",
+  "content_counts": {
+    "unit_profiles": 73,
+    "hit_locations": 311,
+    "target_band_memberships": 185,
+    "split_profiles": 20,
+    "overlap_locations": 24,
+    "cards": 219,
+    "card_decks": 17,
+    "magic_cards": 114,
+    "magic_decks": 6,
+    "faq_source_rows": 71,
+    "faq_global_deduplicated_entries": 66
+  },
+  "publication_writes_performed": false,
+  "product_logic_changed_in_cv_rel_01c": false,
+  "data_payload_changed_from_accepted_r3a": false
+}
