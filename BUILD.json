@@ -21,7 +21,7 @@
     "sha256": "1ddb0b70bfc0d2e504f8877fa052a54a7466919036f9d668f41bf204c3d003ca",
     "mode": "read_only"
   },
-  "release_index_sha256": "e9147add9b305f46702ef2d0da73829fb6db3e5c3f2e83247eeaa60e06b0be8a",
+  "release_index_sha256": "6a1fddc3e6d4776ecdb48a772ca7d2d37a2173c46106549f04c72349cf6112e2",
   "correction_scope": [
     "add plain creator-support link to the desktop creator/public-links area and mobile creator strip"
   ],

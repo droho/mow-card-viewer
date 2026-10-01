@@ -12,7 +12,7 @@
     {
       "name": "BUILD.json",
       "bytes": 1426,
-      "sha256": "e4a38c56cd0aaffb592129ae50ce642180182d1782af9c9f8d6d3c54923a56d0"
+      "sha256": "52cbabeca615f899a2448f670269d83e52c24be6ff710a5877e985aebd7223df"
     },
     {
       "name": "CNAME",
@@ -61,8 +61,8 @@
     },
     {
       "name": "index.html",
-      "bytes": 2387634,
-      "sha256": "e9147add9b305f46702ef2d0da73829fb6db3e5c3f2e83247eeaa60e06b0be8a"
+      "bytes": 2387656,
+      "sha256": "6a1fddc3e6d4776ecdb48a772ca7d2d37a2173c46106549f04c72349cf6112e2"
     },
     {
       "name": "robots.txt",
