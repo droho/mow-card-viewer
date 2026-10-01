@@ -679,11 +679,14 @@ body.has-compare-tray .main{padding-bottom:100px}
 .brand .cv-brand-link-sep{color:#617984;font-size:10px;opacity:.8}
 .brand .cv-brand-builder-link,.brand .cv-public-legal-link{color:#b9c8c9;font:700 10px/1.2 system-ui,sans-serif;text-decoration:none;opacity:.82}
 .brand .cv-brand-builder-link:hover,.brand .cv-public-legal-link:hover{text-decoration:underline;opacity:1}
+.brand .cv-support-link{display:inline-flex;align-items:center;margin-top:8px;padding:6px 9px;border:1px solid rgba(226,192,125,.46);border-radius:999px;background:rgba(8,25,33,.78);color:#e2c07d;font:800 10px/1.15 system-ui,sans-serif;text-decoration:none;letter-spacing:.01em;box-shadow:inset 0 1px rgba(255,255,255,.035)}
+.brand .cv-support-link:hover{border-color:rgba(226,192,125,.72);background:rgba(18,42,52,.92)}
+.brand .cv-support-link:focus-visible{outline:2px solid #e2c07d;outline-offset:2px}
 .brand .cv-public-legal-link{display:inline-block;margin-top:5px}
 .cv-mobile-brand-strip{display:none}
 @media(max-width:720px){
   .cv-mobile-brand-strip{
-    display:flex;align-items:center;justify-content:center;gap:8px;
+    display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;
     min-height:26px;margin:-2px 0 7px;padding:4px 9px;
     border:1px solid rgba(255,255,255,.10);border-radius:8px;
     background:linear-gradient(90deg,rgba(9,27,35,.76),rgba(16,38,48,.84),rgba(9,27,35,.76));
@@ -695,6 +698,8 @@ body.has-compare-tray .main{padding-bottom:100px}
   .cv-mobile-credit-by{color:#dce5e8}
   .cv-mobile-credit-name{color:#e2c07d}
   .cv-mobile-builder{color:#b9c8c9}
+  .cv-mobile-support{flex:0 0 100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:100%;margin-top:1px;padding:5px 8px;border:1px solid rgba(226,192,125,.42);border-radius:999px;background:rgba(8,25,33,.72);color:#e2c07d;font:800 9.5px/1.1 system-ui,sans-serif;letter-spacing:.01em}
+  .cv-mobile-support:focus-visible{outline:2px solid #e2c07d;outline-offset:1px}
   .cv-mobile-brand-strip a:active,.cv-mobile-brand-strip a:focus-visible{text-decoration:underline}
   .cv-mobile-strip-sep{color:#5f7781;font-size:8px}
 }
@@ -715,6 +720,7 @@ body.has-compare-tray .main{padding-bottom:100px}
         <span class="cv-brand-link-sep" aria-hidden="true">•</span>
         <a class="cv-brand-builder-link" href="https://mowfleetbuilder.com" target="_blank" rel="noopener noreferrer">Fleet Builder ↗</a>
       </div>
+      <a class="cv-support-link" href="https://buymeacoffee.com/droho" target="_blank" rel="noopener noreferrer">⚓ Buy the Shipwright a grog</a>
       <a class="cv-public-legal-link" href="LEGAL_NOTICE.html">Legal notice</a>
     </div>
     <div class="mode-switch" aria-label="Rodzaj czytnika">
@@ -820,6 +826,7 @@ body.has-compare-tray .main{padding-bottom:100px}
         </a>
         <span class="cv-mobile-strip-sep" aria-hidden="true">•</span>
         <a class="cv-mobile-builder" href="https://mowfleetbuilder.com" target="_blank" rel="noopener noreferrer">Fleet Builder ↗</a>
+        <a class="cv-mobile-support" href="https://buymeacoffee.com/droho" target="_blank" rel="noopener noreferrer">⚓ Buy the Shipwright a grog</a>
       </div>
       <div class="toolbar-copy">
         <strong id="toolbarTitle">Graficzna karta jednostki</strong>

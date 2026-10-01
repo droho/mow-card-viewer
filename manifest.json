@@ -1,18 +1,18 @@
 {
-  "workstream": "CV-REL-01",
-  "stage": "CV-REL-01D-CORR-02",
-  "candidate": "RC3",
+  "workstream": "CV-MAINT-GROG-01",
+  "stage": "CV-MAINT-GROG-01",
+  "candidate": "GROG-01",
   "public_version": "0.7.0",
-  "status": "MANUALLY_ACCEPTED_READY_FOR_CONTROLLED_PRODUCTION_REPLACEMENT",
+  "status": "CONTROLLED_PRODUCTION_MICRO_MAINTENANCE",
   "canonical_url": "https://cards.mowfleetbuilder.com/",
   "production_repository": "droho/mow-card-viewer",
-  "parent_production_commit": "ec586a176a4dbf004b8cadaf0ef840fa6a1bba74",
-  "parent_production_index_sha256": "aac3e258ea9b0451126f6aa32eab9e1a5e4327c5e9a8001a3c6a6bc016cd7035",
+  "parent_production_commit": "536137c9b739e5281b2cf6344aaea3284f16e043",
+  "parent_production_index_sha256": "da4b05f01ba6d63dd20d0700d693a2f96805a1f97ba2a4a17923502f874eba1b",
   "files": [
     {
       "name": "BUILD.json",
-      "bytes": 1583,
-      "sha256": "2cfef79c51925cc7d95ee7428e3cc8768ac6eab299ed0c15c417d51580fdefac"
+      "bytes": 1426,
+      "sha256": "e4a38c56cd0aaffb592129ae50ce642180182d1782af9c9f8d6d3c54923a56d0"
     },
     {
       "name": "CNAME",
@@ -61,13 +61,25 @@
     },
     {
       "name": "index.html",
-      "bytes": 2386413,
-      "sha256": "da4b05f01ba6d63dd20d0700d693a2f96805a1f97ba2a4a17923502f874eba1b"
+      "bytes": 2387634,
+      "sha256": "e9147add9b305f46702ef2d0da73829fb6db3e5c3f2e83247eeaa60e06b0be8a"
     },
     {
       "name": "robots.txt",
       "bytes": 23,
       "sha256": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95"
     }
-  ]
+  ],
+  "change_class": "UI-only / low risk / no game-data change",
+  "external_support_link": {
+    "href": "https://buymeacoffee.com/droho",
+    "label": "⚓ Buy the Shipwright a grog",
+    "plain_anchor_only": true
+  },
+  "contracts_unchanged": {
+    "game_data_payload": true,
+    "data_core": true,
+    "fleet_builder": true,
+    "game_companion": true
+  }
 }

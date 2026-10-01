@@ -1,15 +1,15 @@
 {
   "product": "Man O' War Card Viewer",
   "public_version": "0.7.0",
-  "release_stage": "CV-REL-01D-CORR-02",
-  "candidate": "RC3",
-  "status": "MANUALLY_ACCEPTED_IMMUTABLE_CORRECTION_CANDIDATE",
+  "release_stage": "CV-MAINT-GROG-01",
+  "candidate": "GROG-01",
+  "status": "CONTROLLED_PRODUCTION_MICRO_MAINTENANCE",
   "canonical_url": "https://cards.mowfleetbuilder.com/",
   "intended_repository": "droho/mow-card-viewer",
   "parent_production": {
-    "candidate": "RC2",
-    "commit": "ec586a176a4dbf004b8cadaf0ef840fa6a1bba74",
-    "index_sha256": "aac3e258ea9b0451126f6aa32eab9e1a5e4327c5e9a8001a3c6a6bc016cd7035"
+    "candidate": "RC3",
+    "commit": "536137c9b739e5281b2cf6344aaea3284f16e043",
+    "index_sha256": "da4b05f01ba6d63dd20d0700d693a2f96805a1f97ba2a4a17923502f874eba1b"
   },
   "accepted_correction_review": {
     "artifact": "CV-REL-01D_CORR-02_RC3_REVIEW_R3.html",
@@ -21,17 +21,16 @@
     "sha256": "1ddb0b70bfc0d2e504f8877fa052a54a7466919036f9d668f41bf204c3d003ca",
     "mode": "read_only"
   },
-  "release_index_sha256": "da4b05f01ba6d63dd20d0700d693a2f96805a1f97ba2a4a17923502f874eba1b",
+  "release_index_sha256": "e9147add9b305f46702ef2d0da73829fb6db3e5c3f2e83247eeaa60e06b0be8a",
   "correction_scope": [
-    "fix EN to PL language-switch freeze caused by competing translation attribute-restoration observers",
-    "close remaining English UI audit leftovers found during the freeze correction pass",
-    "add by Droho Instagram attribution and Fleet Builder links to the header",
-    "add a compact mobile-only creator and Fleet Builder strip"
+    "add plain creator-support link to the desktop creator/public-links area and mobile creator strip"
   ],
-  "game_data_payload_changed_from_rc2": false,
-  "weapon_diagram_payload_changed_from_rc2": false,
   "data_core_changed": false,
   "fleet_builder_changed": false,
   "game_companion_changed": false,
-  "publication_writes_performed_for_rc3": false
+  "game_data_payload_changed_from_rc3": false,
+  "weapon_diagram_payload_changed_from_rc3": false,
+  "external_javascript_added": false,
+  "external_tracking_or_cookies_added": false,
+  "publication_writes_performed_for_grog_01": true
 }
